@@ -42,34 +42,68 @@ namespace PageObjectModel
             }
         }
 
-        public void InitBrowser(string browserName)
+        public IWebDriver InitBrowser(string browserName, List<string> options)
         {
             switch (browserName.ToLower())
             {
                 case "firefox":
-                    if (!Drivers.ContainsKey("firefox"))
+                    if (!drivers.ContainsKey("firefox"))
                     {
-                        driver = new FirefoxDriver(@".\Drivers");
-                        drivers.Add("firefox", driver);
+                        FirefoxOptions firefoxOptions = new FirefoxOptions();
+                        firefoxOptions.AddArguments(options);
+                        try
+                        {
+                            driver = new FirefoxDriver(@".\Drivers", firefoxOptions);
+                            drivers.Add("firefox", driver);
+                            return driver;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("The firefox driver didn't start, did you put the right options?", ex.Message);
+                        }
+
                     }
                     break;
                 case "ie":
-                    if (!Drivers.ContainsKey("ie"))
+                    if (!drivers.ContainsKey("ie"))
                     {
-                        driver = new EdgeDriver(@".\Drivers");
-                        drivers.Add("ie", driver);
+                        EdgeOptions edgeOptions = new EdgeOptions();
+                        edgeOptions.AddArguments(options);
+                        try
+                        {
+                            driver = new EdgeDriver(@".\Drivers", edgeOptions);
+                            drivers.Add("ie", driver);
+                            return driver;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("The edge driver didn't start, did you put the right options?", ex.Message);
+                        }
+
                     }
                     break;
                 case "chrome":
                 default:
-                    if (!Drivers.ContainsKey("chrome"))
+                    if (!drivers.ContainsKey("chrome"))
                     {
-                        driver = new ChromeDriver(@".\Drivers");
-                        drivers.Add("chrome", driver);
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.AddArguments(options);
+                        try
+                        {
+                            driver = new ChromeDriver(@".\Drivers", chromeOptions);
+                            drivers.Add("chrome", driver);
+                            return driver;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("The chrome driver didn't start, did you put the right options?", ex.Message);
+                        }
                     }
                     break;
             }
+            return null;
         }
+
 
         public void LoadApplication(string url, string driverName)
         {
@@ -83,14 +117,14 @@ namespace PageObjectModel
             }
         }
 
-        public static void CloseAllDrivers()
+/*        public void CloseAllDrivers()
         {
             foreach (var key in drivers.Keys)
             {
                 drivers[key].Close();
-                drivers[key].Quit();
+                drivers[key].Close();
             }
-        }
+        }*/
     }
 }
 

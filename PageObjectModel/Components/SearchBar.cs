@@ -20,7 +20,7 @@ namespace PageObjectModel.Components
         {
             try
             {
-                searchBar = driver.FindElement(By.Id("gc"));
+                searchBar = driver.FindElement(By.Id("gh-ac"));
             }
             catch(Exception e)
             {

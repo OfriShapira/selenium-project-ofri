@@ -4,32 +4,53 @@ namespace PageObjectModel.Tests
 {
     public class Tests
     {
-        private EbayTestObject tester;
+        private EbayTestObject chromeTester, firefoxTester;
+        private List<string> chromeOptions, firefoxOptions;
 
         [SetUp]
         public void Setup()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--headless");
-            tester = new EbayTestObject("chrome", options);
+
+            chromeOptions = new List<string>
+            {
+                "--headless"
+            };
+            firefoxOptions = new List<string> { };
+
+            chromeTester = new EbayTestObject("chrome", chromeOptions);
+            firefoxTester = new EbayTestObject("firefox", firefoxOptions);
+           
         }
 
         [Test]
-        public void Test1()
+        public void GetAllPricesLargerThanInChrome()
         {
-           tester.Start();
-           tester.Home.SearchBar.SearchFor("Model");
-           IList<double> prices = tester.Results.GetAllPricesHigherThan(50);
+           chromeTester.Start();
+           chromeTester.Home.SearchBar.SearchFor("Mouse");
+           IList<double> prices = chromeTester.Results.GetAllPricesHigherThan(50);
            foreach (double price in prices)
            {
                 Console.WriteLine(price);
            }
         }
 
+        [Test]
+        public void GetAllPricesLargerThanInFirefox()
+        {
+            firefoxTester.Start();
+            firefoxTester.Home.SearchBar.SearchFor("Keyboard");
+            IList<double> prices = firefoxTester.Results.GetAllPricesHigherThan(0);
+            foreach (double price in prices)
+            {
+                Console.WriteLine(price);
+            }
+        }
+
         [TearDown]
         public void Close()
         {
-            tester.Close();
+            chromeTester.Close();
+            firefoxTester.Close();
         }
     }
 }
