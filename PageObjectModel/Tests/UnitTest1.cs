@@ -5,6 +5,7 @@ namespace PageObjectModel.Tests
     public class Tests
     {
         private EbayTestObject tester;
+
         [SetUp]
         public void Setup()
         {
@@ -17,7 +18,7 @@ namespace PageObjectModel.Tests
         public void Test1()
         {
            tester.Start();
-           tester.Home.SearchBar.SearchFor("mouse");
+           tester.Home.SearchBar.SearchFor("Model");
            IList<double> prices = tester.Results.GetAllPricesHigherThan(50);
            foreach (double price in prices)
            {

@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PageObjectModel.Pages;
 
 namespace PageObjectModel
 {
@@ -15,7 +10,7 @@ namespace PageObjectModel
         public HomePage Home;
         public ResultsPage Results;
         public EbayTestObject(string brwoser, ChromeOptions options) {
-            driver  = new ChromeDriver(@"C:\Users\ofris\source\drivers", options);
+            driver  = new ChromeDriver(@".\Drivers", options);
             Home = new HomePage(driver);
             Results = new ResultsPage(driver);
         }
