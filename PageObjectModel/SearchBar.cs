@@ -11,7 +11,7 @@ namespace PageObjectModel
     {
         private IWebDriver driver;
         private IWebElement searchBar, searchIcon;
-        public SearchBar(IWebDriver webDriver) 
+        public SearchBar(IWebDriver webDriver)
         { 
             driver = webDriver;
         }

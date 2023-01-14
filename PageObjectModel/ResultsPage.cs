@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -26,16 +27,20 @@ namespace PageObjectModel
             ResultsItems = new List<ResultsItem>();
         }
         
-        public void GetAllItems()
+        public  IList<double> GetAllPricesHigherThan(int num)
         {
-            IWebElement ulElement = driver.FindElement(By.TagName("ul"));
-            IList<IWebElement> liElements = ulElement.FindElements(By.TagName("li"));
-
-            // Start from index 1 so we skip the irelevant tag (categories)
-            foreach(IWebElement liElement in liElements)
+            IList<double> resultPrices = new List<double>();
+            IList<IWebElement> webPrices = driver.FindElements(By.ClassName("s-item__price"));
+            for (int i = 1; i < webPrices.Count; i++)
             {
-                Console.WriteLine(liElement);
+                string currentPrice = Regex.Match(webPrices[i].Text, @"\s+\d+(.)?\d+").Value;
+                double price = double.Parse(currentPrice);
+                if (price > num)
+                {
+                    resultPrices.Add(price);
+                }
             }
+            return resultPrices;
         }
 
 
