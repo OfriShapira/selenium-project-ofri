@@ -9,8 +9,8 @@ namespace PageObjectModel.Components
 {
     class SearchBar
     {
-        private IWebDriver driver;
         private IWebElement searchBar, searchIcon;
+        private IWebDriver driver;
         public SearchBar(IWebDriver webDriver)
         { 
             driver = webDriver;
@@ -18,6 +18,7 @@ namespace PageObjectModel.Components
 
         public void SearchFor(string search)
         {
+
             try
             {
                 searchBar = driver.FindElement(By.Id("gh-ac"));

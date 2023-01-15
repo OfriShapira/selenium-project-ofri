@@ -42,7 +42,7 @@ namespace PageObjectModel
             }
         }
 
-        public IWebDriver InitBrowser(string browserName, List<string> options)
+        public static IWebDriver GetDriver(string browserName, List<string> options)
         {
             switch (browserName.ToLower())
             {
@@ -53,9 +53,9 @@ namespace PageObjectModel
                         firefoxOptions.AddArguments(options);
                         try
                         {
-                            driver = new FirefoxDriver(@".\Drivers", firefoxOptions);
-                            drivers.Add("firefox", driver);
-                            return driver;
+                            IWebDriver fireFoxDriver = new FirefoxDriver(@".\Drivers", firefoxOptions);
+                            drivers.Add("firefox", fireFoxDriver);
+                            return fireFoxDriver;
                         }
                         catch (Exception ex)
                         {
@@ -71,9 +71,9 @@ namespace PageObjectModel
                         edgeOptions.AddArguments(options);
                         try
                         {
-                            driver = new EdgeDriver(@".\Drivers", edgeOptions);
-                            drivers.Add("ie", driver);
-                            return driver;
+                            IWebDriver edgeDriver = new EdgeDriver(@".\Drivers", edgeOptions);
+                            drivers.Add("ie", edgeDriver);
+                            return edgeDriver;
                         }
                         catch (Exception ex)
                         {
@@ -90,9 +90,9 @@ namespace PageObjectModel
                         chromeOptions.AddArguments(options);
                         try
                         {
-                            driver = new ChromeDriver(@".\Drivers", chromeOptions);
-                            drivers.Add("chrome", driver);
-                            return driver;
+                            IWebDriver chromeDriver = new ChromeDriver(@".\Drivers", chromeOptions);
+                            drivers.Add("chrome", chromeDriver);
+                            return chromeDriver;
                         }
                         catch (Exception ex)
                         {
@@ -104,27 +104,14 @@ namespace PageObjectModel
             return null;
         }
 
-
-        public void LoadApplication(string url, string driverName)
+        public static void LoadApplication(string url, IWebDriver driver)
         {
-
-            if (Drivers.Count() > 0)
-            {
-                if (drivers.ContainsKey(driverName))
-                {
-                    drivers[driverName].Url = url;
-                }
-            }
+            driver.Url = url;   
         }
-
-/*        public void CloseAllDrivers()
+        public static void CloseDriver(IWebDriver driver)
         {
-            foreach (var key in drivers.Keys)
-            {
-                drivers[key].Close();
-                drivers[key].Close();
-            }
-        }*/
+            driver.Close();
+        }
     }
 }
 

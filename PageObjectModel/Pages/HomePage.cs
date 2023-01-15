@@ -8,7 +8,7 @@ namespace PageObjectModel.Pages
         private IWebDriver driver;
         public SearchBar SearchBar;
         public Header Header;
-        public Categories Categories = new Categories();
+        public Categories Categories;
 
         public HomePage(IWebDriver webDriver)
         {
