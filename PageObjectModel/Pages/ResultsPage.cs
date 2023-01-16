@@ -45,6 +45,12 @@ namespace PageObjectModel.Pages
             return resultPrices;
         }
 
-
+        public void FilterBy(int num)
+        {
+            IWebElement minFilter = driver.FindElement(By.Id("s0-52-12-0-1-2-6-0-8[3]-0-textrange-beginParamValue-textbox"));
+            minFilter.SendKeys(Convert.ToString(num));
+            IWebElement filterButton = driver.FindElement(By.XPath("//button[@title=\"Submit price range\"]"));
+            filterButton.Click();
+        }
     }
 }

@@ -12,16 +12,16 @@ namespace PageObjectModel.Tests
         [SetUp]
         public void Setup()
         {
-            chromeDriver =  BrowserFactory.GetDriver("chrome", new List<string> { "--headless"});
+            chromeDriver = BrowserFactory.GetDriver("chrome", new List<string> {});
             chromeTester = new EbayTestObject(chromeDriver);
         }
 
-        [Test]
-        public void ChromeTest()
+/*        [Test]*/
+/*        public void ChromeTest()
         {
-            /*
+            *//*
              Get All Prices Larger Than In Chrome
-            */
+            *//*
            BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
            chromeTester.Start();
            chromeTester.Home.SearchBar.SearchFor("Mouse");
@@ -30,12 +30,20 @@ namespace PageObjectModel.Tests
            {
                 Console.WriteLine(price);
            }
+        }*/
+        [Test]
+        public void ChromeTestWithFilter() {
+            BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
+            chromeTester.Start();
+            chromeTester.Home.SearchBar.SearchFor("Mouse");
+            chromeTester.Results.FilterBy(50);
         }
+        
 
         [TearDown]
         public void Close()
         {
-            BrowserFactory.CloseDriver(chromeDriver);
+           BrowserFactory.CloseDriver(chromeDriver);
         }
     }
 }
