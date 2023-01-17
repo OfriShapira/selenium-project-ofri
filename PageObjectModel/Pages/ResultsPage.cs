@@ -29,7 +29,7 @@ namespace PageObjectModel.Pages
             ResultsItems = new List<ResultsItem>();
         }
         
-        public  IList<double> GetAllPricesHigherThan(int num)
+        public IList<double> GetAllPricesHigherThan(int num)
         {
             IList<double> resultPrices = new List<double>();
             IList<IWebElement> webPrices = driver.FindElements(By.ClassName("s-item__price"));
@@ -51,6 +51,29 @@ namespace PageObjectModel.Pages
             minFilter.SendKeys(Convert.ToString(num));
             IWebElement filterButton = driver.FindElement(By.XPath("//button[@title=\"Submit price range\"]"));
             filterButton.Click();
+        }
+
+        public void PrintAllItems(List<ResultsItem> items)
+        {
+            foreach (ResultsItem item in items) 
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        public void GetItemList()
+        {
+            IList<ResultsItem> items = new List<ResultsItem>();
+            IList<IWebElement> webPrices = driver.FindElements(By.ClassName("s-item__price"));
+            IList<IWebElement> itemTitles = driver.FindElements(By.ClassName("s-item__title"));
+            Console.WriteLine(webPrices.Count + ", " + itemTitles.Count);
+            for(int i = 1; i < webPrices.Count; i++) 
+            {
+                string currentPrice = Regex.Match(webPrices[i].Text, @"\s+\d+(.)?\d+").Value;
+                double price = double.Parse(currentPrice);
+                items.Add(new ResultsItem(itemTitles[i].Text, price));
+                Console.WriteLine(items[i-1].ToString());
+            }
         }
     }
 }

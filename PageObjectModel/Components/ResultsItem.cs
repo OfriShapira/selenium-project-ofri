@@ -9,10 +9,20 @@ namespace PageObjectModel.Components
 {
      class ResultsItem
     {
-        private IWebDriver driver;
-        public ResultsItem(IWebDriver webDriver) 
+        public string Title { get; set; }
+        public double Price { get; set; }
+        public ResultsItem(string title, double price) 
         {
-            driver = webDriver;  
+            Title = title;
+            Price = price;
         }
+
+        public override string ToString()
+        {
+            return $"[Title: {Title}, \nPrice: {Price}]\n";
+
+        }
+
+
     }
 }
