@@ -18,7 +18,6 @@ namespace PageObjectModel.Components
 
         public void SearchFor(string search)
         {
-
             try
             {
                 searchBar = driver.FindElement(By.Id("gh-ac"));

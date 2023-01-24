@@ -4,13 +4,14 @@ using PageObjectModel.Pages;
 
 namespace PageObjectModel
 {
-    class EbayTestObject
+    // todo: saparate filter, add get and set to the homepage, add prperties to classes, add singleton to searchbar
+    class AmazonTestObject
     {
         private IWebDriver driver;
-        public HomePage Home;
-        public ResultsPage Results;
+        public PageObjectModel.Pages.HomePage Home;
+        public PageObjectModel.Pages.ResultsPage Results;
 
-        public EbayTestObject(IWebDriver driver)
+        public AmazonTestObject(IWebDriver driver)
         {
             this.driver = driver;
             Home = new HomePage(driver);

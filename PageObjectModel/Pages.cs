@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PageObjectModel.Components
+namespace PageObjectModel
 {
-    class Filters
+    internal class Pages
     {
     }
 }

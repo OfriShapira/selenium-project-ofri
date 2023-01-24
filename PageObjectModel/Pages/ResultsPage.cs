@@ -15,17 +15,17 @@ namespace PageObjectModel.Pages
     class ResultsPage
     {
         private IWebDriver driver;
-        public SearchBar SearchBar;
-        public Header Header;
-        public Filters Filters;
-        public List<ResultsItem> ResultsItems;
+        public SearchBar SearchBar { get; set; }
+        public Header Header { get; set; }
+        public Filter Filter { get; set; }
+        public List<ResultsItem> ResultsItems { get; set; }
         
         public ResultsPage(IWebDriver webDriver) 
         {
             driver = webDriver;
             SearchBar = new SearchBar(driver);
             Header = new Header();
-            Filters = new Filters();
+            Filter = new Filter();
             ResultsItems = new List<ResultsItem>();
         }
         
@@ -43,6 +43,22 @@ namespace PageObjectModel.Pages
                 }
             }
             return resultPrices;
+        }
+
+        public void GetAllPricesHigherThanXPath(int num)
+        {
+            string xpath = "//span[@class='s-item__price' and" +
+                $" number(translate(substring-after(., 'ILS '), ',', '')) > {num} or" +
+                " number(translate(substring-before(substring-after(., 'ILS '), ' to'), ',', '') > " +
+                $"{num})]/ancestor::div[@class='s-item__details clearfix']//preceding-sibling::a//span[@role='heading']";
+            
+            IList<IWebElement> titels = driver.FindElements(By.XPath(xpath));
+            Console.WriteLine(titels.Count);
+
+            foreach (IWebElement title in titels) 
+            {
+                Console.WriteLine(title.Text,"\n");
+            }
         }
 
         public void FilterBy(int num)

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ofris\\source\\repos\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj": {}
+    "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ofris\\source\\repos\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj": {
+    "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ofris\\source\\repos\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj",
+        "projectUniqueName": "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj",
         "projectName": "PageObjectModel",
-        "projectPath": "C:\\Users\\ofris\\source\\repos\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj",
+        "projectPath": "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj",
         "packagesPath": "C:\\Users\\ofris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ofris\\source\\repos\\PageObjectModel\\PageObjectModel\\obj\\",
+        "outputPath": "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -7,53 +7,58 @@ namespace PageObjectModel.Tests
     public class ChromeUnitTest1
     {
         private IWebDriver chromeDriver;
-        private EbayTestObject chromeTester;
+        private EbayTestObject ebayTester;
 
 
         [SetUp]
         public void Setup()
         {
             chromeDriver = BrowserFactory.GetDriver("chrome", new List<string> {});
-            chromeTester = new EbayTestObject(chromeDriver);
+            ebayTester = new EbayTestObject(chromeDriver);
         }
 
-        /*        [Test]*/
-        /*        public void ChromeTest()
+        [Test]
+        public void ChromeTest()
+        {
+            BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
+            ebayTester.Start();
+            ebayTester.Home.SearchBar.SearchFor("Mouse");
+            IList<double> prices = ebayTester.Results.GetAllPricesHigherThan(50);
+            foreach (double price in prices)
+            {
+                Console.WriteLine(price);
+            }
+        }
+        /*        [Test]
+                public void ChromeTestWithFilter()
                 {
-                    *//*
-                     Get All Prices Larger Than In Chrome
-                    *//*
-                   BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
-                   chromeTester.Start();
-                   chromeTester.Home.SearchBar.SearchFor("Mouse");
-                   IList<double> prices = chromeTester.Results.GetAllPricesHigherThan(50);
-                   foreach (double price in prices)
-                   {
-                        Console.WriteLine(price);
-                   }
+                    BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
+                    ebayTester.Start();
+                    ebayTester.Home.SearchBar.SearchFor("Mouse");
+                    ebayTester.Results.FilterBy(50);
                 }*/
         /*        [Test]
-                public void ChromeTestWithFilter() {
+                public void GetItemsTest()
+                {
                     BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
                     chromeTester.Start();
                     chromeTester.Home.SearchBar.SearchFor("Mouse");
-                    chromeTester.Results.FilterBy(50);
+                    chromeTester.Results.GetItemList();
                 }*/
-        [Test]
-        public void GetItemsTest()
-        {
-            BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
-            chromeTester.Start();
-            chromeTester.Home.SearchBar.SearchFor("Mouse");
-            chromeTester.Results.GetItemList();
-        }
 
-
+        /*        [Test]
+                public void ChromeTestWithXpath()
+                {
+                    BrowserFactory.LoadApplication("https://www.ebay.com/", chromeDriver);
+                    ebayTester.Start();
+                    ebayTester.Home.SearchBar.SearchFor("Mouse");
+                    ebayTester.Results.GetAllPricesHigherThanXPath(20);
+                }*/
 
         [TearDown]
         public void Close()
         {
-           BrowserFactory.CloseDriver(chromeDriver);
+            BrowserFactory.CloseDriver(chromeDriver);
         }
     }
 }
