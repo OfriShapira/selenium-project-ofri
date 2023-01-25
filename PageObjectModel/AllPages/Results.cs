@@ -36,20 +36,24 @@ namespace PageObjectModel.AllPages
             }
         }
 
+
+        // Method which gets a dictionary of conditions and returns a list of items accodrding to those conditions
         public List<Item> GetResultsBy(Dictionary<string, string> conditions)
         {
             List<Item> results = new List<Item>();
-
-            string mainXpath = "(//span[@class='a-price' ";
-            string closingXpath = "]//ancestor::div[@class='a-section a-spacing-small a-spacing-top-small'])";
+            
+            string mainXpath = "//span[@class='a-price' ";
+            string closingXpath = "]//ancestor::div[@class='a-section a-spacing-small a-spacing-top-small']";
 
             if (conditions.ContainsKey("Price_Lower_Then"))
             {
+                // extract the price value from the span, and perform the condtion which check if the value is lower than the input
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) < {conditions["Price_Lower_Then"]}";
             }
 
             if (conditions.ContainsKey("Price_Hiegher_OR_Equal_Then"))
             {
+                // extract the price value from the span, and perform the condtion which check if the value is higher or equal than the input
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) >= {conditions["Price_Hiegher_OR_Equal_Then"]} ";
             }
 
@@ -58,41 +62,55 @@ namespace PageObjectModel.AllPages
                 string isFreeShipped = conditions["Free_Shipping"];
                 if (isFreeShipped == "true")
                 {
+                    // check if the ancestor div of the span contains span with 'free shipping' text 
                     mainXpath += " and .//ancestor::div[@class='sg-row' and .//span[contains(text(), 'FREE Shipping')]] ";
                 }
                 else if (isFreeShipped == "false")
                 {
+                    // check if the ancestor div of the span contains span without 'free shipping' text
                     mainXpath += " and .//ancestor::div[@class='sg-row' and .//span[not(contains(text(), 'FREE Shipping'))]] ";
                 }
             }
 
+            // concat to the main xpath string of xpath, which points on the parent div of each product
             mainXpath += closingXpath;
 
-            // Find the amount of items in the list
             IList<IWebElement> itemsList = driver.FindElements(By.XPath(mainXpath));
 
-            // Add the matched results to the list
-            for (int i = 0; i < itemsList.Count; i++)
+            // adds the products we found from the xpath expression, with its conditions, to the items list
+            foreach (IWebElement item in itemsList)
             {
-                IWebElement linkElement = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//a[@class='a-size-base a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']"));
-
-                string currentTitle = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//span[@class='a-size-medium a-color-base a-text-normal']")).Text;
-                string priceWhole = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//span[@class='a-price-whole']")).Text;
-                string priceFraction = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//span[@class='a-price-fraction']")).Text;
-                string linkString = linkElement.GetAttribute("href");
+                IWebElement linkElement = item.FindElement(By.XPath(".//a[@class='a-size-base a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']"));
+               
+                // find each field of the Item object, by search the xpath on each product item we found from the main xpath
+                string link = linkElement.GetAttribute("href");
+                string currentTitle = item.FindElement(By.XPath(".//span[@class='a-size-medium a-color-base a-text-normal']")).Text;
+                string priceWhole = item.FindElement(By.XPath(".//span[@class='a-price-whole']")).Text;
+                string priceFraction = item.FindElement(By.XPath(".//span[@class='a-price-fraction']")).Text;
                 string priceFull = '$' + priceWhole + '.' + priceFraction;
-
-                results.Add(new Item(currentTitle, priceFull, linkString));
+                
+                // finally, insert the fields into a new Item
+                results.Add(new Item(currentTitle, priceFull, link));
             }
 
             return results;
         }
 
+        // Prints all the items in the list
         public void PrintItems(List<Item> items)
         {
             for(int i = 0; i < items.Count; i++) 
             {
-                Console.WriteLine($"Result: {i + 1}\n" + items[i].ToString());
+                // if this is the last item in the list, do not insert a comma between the prints
+                if (i != items.Count - 1)
+                {
+                   Console.WriteLine(items[i].ToString() + ",");
+                }
+                else
+                {
+                    Console.WriteLine(items[i].ToString());
+                }
+               
             }
         }
     }

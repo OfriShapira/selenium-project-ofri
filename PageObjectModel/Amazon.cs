@@ -26,14 +26,11 @@ namespace PageObjectModel
             }
         }
 
+        // Method to start and setup the driver
         public void Start()
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
-        public void Close()
-        {
-            driver.Close();
-        }
     }
 }

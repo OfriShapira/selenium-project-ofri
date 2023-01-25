@@ -14,21 +14,6 @@ namespace PageObjectModel
     class BrowserFactory
     {
         private static IDictionary<string, IWebDriver> drivers = new Dictionary<string, IWebDriver>();
-        private static IWebDriver driver;
-
-        public IWebDriver Driver
-        {
-            get
-            {
-                if (driver == null)
-                    throw new NullReferenceException("The WebDriver browser instance was not initialized. You should first call the method InitBrowser.");
-                return driver;
-            }
-            private set
-            {
-                driver = value;
-            }
-        }
 
         public IDictionary<string, IWebDriver> Drivers
         {
@@ -42,6 +27,7 @@ namespace PageObjectModel
             }
         }
 
+        // Method which gets browser name to start, and a dictionary of the browser options, and start the requested driver
         public static IWebDriver GetDriver(string browserName, List<string> options)
         {
             switch (browserName.ToLower())
@@ -59,7 +45,7 @@ namespace PageObjectModel
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("The firefox driver didn't start, did you put the right options?", ex.Message);
+                            Console.WriteLine("The firefox driver didn't start, did you set the right options?", ex.Message);
                         }
 
                     }
@@ -77,7 +63,7 @@ namespace PageObjectModel
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("The edge driver didn't start, did you put the right options?", ex.Message);
+                            Console.WriteLine("The edge driver didn't start, did you set the right options?", ex.Message);
                         }
 
                     }
@@ -96,7 +82,7 @@ namespace PageObjectModel
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("The chrome driver didn't start, did you put the right options?", ex.Message);
+                            Console.WriteLine("The chrome driver didn't start, did you set the right options?", ex.Message);
                         }
                     }
                     break;
@@ -104,10 +90,13 @@ namespace PageObjectModel
             return null;
         }
 
+        // Method to load a specific url in the given driver
         public static void LoadApplication(string url, IWebDriver driver)
         {
             driver.Url = url;   
         }
+
+        // Method to close the given driver
         public static void CloseDriver(IWebDriver driver)
         {
             driver.Close();
