@@ -86,27 +86,17 @@ namespace PageObjectModel.AllPages
         public void GetResultsBy(Dictionary<string, string> conditions)
         {
             List<Item> results = new List<Item>();
-            IList<IWebElement> itemsList = new List<IWebElement>();
 
             string mainXpath = "(//span[@class='a-price' ";
-            string xpathLowerThan = " and number(substring-before(substring((.), 2, 30), '$')) < 30 ";
-            string xpathHigherThan = " and number(substring-before(substring((.), 2, 30), '$')) > 5 ";
-            string xpathShippingTrue = " and .//ancestor::div[@class='sg-row' and .//span[contains(text(), 'FREE Shipping')] ";
-            string xpathShippingFalse = " and .//ancestor::div[@class='sg-row' and .//span[not(contains(text(), 'FREE Shipping'))] ";
             string closingXpath = "]//ancestor::div[@class='a-section a-spacing-small a-spacing-top-small'])";
-
-
-            /*string xpath = "//span[@class='a-price-whole' ";*/
 
             if (conditions.ContainsKey("Price_Lower_Then"))
             {
-                /*xpath += $"and number(translate(text(), '.', '')) < {conditions["PriceLowerThan"]} ";*/
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) < {conditions["Price_Lower_Then"]}";
             }
 
             if (conditions.ContainsKey("PriceHigherThan"))
             {
-                /*xpath += $"and number(translate(text(), '.', '')) > {conditions["PriceHigherThan"]} ";*/
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) >= {conditions["Price_Hiegher_OR_Equal_Then"]} ";
             }
 
@@ -115,35 +105,30 @@ namespace PageObjectModel.AllPages
                 string isFree = conditions["Free_Shipping"];
                 if (isFree == "true")
                 {
-                    //and.//ancestor::div[@class='s-card-container s-overflow-hidden aok-relative puis-include-content-margin puis s-latency-cf-section s-card-border' and .//span[@class='a-color-base a-text-bold' and contains(., 'משלוח בחינם')
-                   /* xpath += $"and .//ancestor::div[@class='s-card-container s-overflow-hidden aok-relative puis-include-content-margin puis s-latency-cf-section s-card-border' " +
-                        $"and .//span[@class='a-color-base a-text-bold' " +
-                        $"and contains(., 'FREE Shipping') ";*/
-
                     mainXpath += " and .//ancestor::div[@class='sg-row' and .//span[contains(text(), 'FREE Shipping')]] ";
-
                 }
                 else if (isFree == "false")
                 {
-                    /*xpath += $"and .//ancestor::div[@class='s-card-container s-overflow-hidden aok-relative puis-include-content-margin puis s-latency-cf-section s-card-border' " +
-                        $"and .//span[@class='a-color-base a-text-bold' " +
-                        $"and not(contains(., 'FREE Shipping'))  ";*/
 
                     mainXpath += " and .//ancestor::div[@class='sg-row' and .//span[not(contains(text(), 'FREE Shipping'))]] ";
                 }
             }
 
-            /*xpath += "]]]//ancestor::div[@class='a-section a-spacing-small a-spacing-top-small']";*/
             mainXpath += closingXpath;
-            itemsList = driver.FindElements(By.XPath(mainXpath));
+
+            // Find the amount of items in the list
+            IList<IWebElement> itemsList = driver.FindElements(By.XPath(mainXpath));
+
             for (int i = 0; i< itemsList.Count; i++) 
             {
                 IWebElement aElement = driver.FindElement(By.XPath($"{mainXpath}[{i+1}]//a[@class='a-size-base a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']"));
+                
                 string currentTitle = driver.FindElement(By.XPath($"{mainXpath}[{i+1}]//span[@class='a-size-medium a-color-base a-text-normal']")).Text;
                 string priceWhole = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//span[@class='a-price-whole']")).Text;
                 string priceFraction = driver.FindElement(By.XPath($"{mainXpath}[{i + 1}]//span[@class='a-price-fraction']")).Text;
                 string currentLink = aElement.GetAttribute("href");
                 string priceFull = priceWhole + '.' + priceFraction;
+                
                 results.Add(new Item(currentTitle,priceFull , currentLink));
                 Console.WriteLine($"result {i + 1}:" + results[i].ToString());
             }
