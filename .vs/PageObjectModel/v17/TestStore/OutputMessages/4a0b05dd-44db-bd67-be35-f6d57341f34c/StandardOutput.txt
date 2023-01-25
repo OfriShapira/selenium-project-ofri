@@ -1,0 +1,55 @@
+{
+Title: KOORUI 24 Inch Computer Monitor Full HD 1920 x 1080p VA Display 75Hz 3000:1 Contrast Ratio with HDMI, VGA, Frameless, 75 x 75 mm VESA Mountable, Ergonomic Tilt, Black
+Price: $91.35
+Link: https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_atf_aps_sr_pg1_1?ie=UTF8&adId=A014972486JMFI2ZYEK0&qualifier=1674661208&id=5427236841733556&widgetName=sp_atf&url=%2FKOORUI-Business-Computer-Monitor-Display%2Fdp%2FB09VD9P2Q3%2Fref%3Dsr_1_1_sspa%3Fcrid%3D3UV5CBW0IV88S%26keywords%3DComputer%2BMonitor%26qid%3D1674661208%26sprefix%3D%252Caps%252C215%26sr%3D8-1-spons%26psc%3D1
+},
+{
+Title: Acer 21.5 Inch Full HD (1920 x 1080) IPS Ultra-Thin Zero Frame Computer Monitor (HDMI & VGA Port), SB220Q bi
+Price: $89.99
+Link: https://www.amazon.com/Acer-SB220Q-Ultra-Thin-Frame-Monitor/dp/B07CVL2D2S/ref=sr_1_3?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-3
+},
+{
+Title: Sceptre 24" Professional Thin 75Hz 1080p LED Monitor 2x HDMI VGA Build-in Speakers, Machine Black (E248W-19203R Series)
+Price: $99.97
+Link: https://www.amazon.com/Sceptre-E248W-19203R-Monitor-Speakers-Metallic/dp/B0773ZY26F/ref=sr_1_4?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-4
+},
+{
+Title: Sceptre 20" 1600x900 75Hz Ultra Thin LED Monitor 2x HDMI VGA Built-in Speakers, Machine Black Wide Viewing Angle 170° (Horizontal) / 160° (Vertical)
+Price: $69.49
+Link: https://www.amazon.com/Sceptre-E205W-16003R-Frameless-Speakers-Metallic/dp/B07743412C/ref=sr_1_5?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-5
+},
+{
+Title: Sceptre 22 inch 75Hz 1080P LED Monitor 99% sRGB HDMI X2 VGA Build-In Speakers, Machine Black (E225W-19203R series)
+Price: $84.99
+Link: https://www.amazon.com/Sceptre-E225W-19203R-Monitor-Speakers-Metallic/dp/B07774L6TT/ref=sr_1_8?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-8
+},
+{
+Title: Acer K202HQL bi 19.5” HD+ (1600 x 900) TN Monitor | 60Hz Refresh Rate | 5ms Response Time | NTSC 72% Color Gamut I Tilt VESA Compatible For Work or Home | HDMI Port 1.4 & VGA Port
+Price: $64.99
+Link: https://www.amazon.com/Acer-K202HQL-Monitor-Refresh-Response/dp/B09MZMJRGJ/ref=sr_1_10?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-10
+},
+{
+Title: KOORUI 22 Inch Computer Monitor, FHD 1080P VA Desktop Display, 75HZ Ultra Thin Bezel/Eye Care/Ergonomic Tilt, HDMI VGA Ports LED Monitor for PC, VESA
+Price: $77.99
+Link: https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A02918702IWD3OZF5GRDE&qualifier=1674661208&id=5427236841733556&widgetName=sp_mtf&url=%2FKOORUI-Computer-Monitor-Desktop-Ergonomic%2Fdp%2FB0B5CY8Y5G%2Fref%3Dsr_1_12_sspa%3Fcrid%3D3UV5CBW0IV88S%26keywords%3DComputer%2BMonitor%26qid%3D1674661208%26sprefix%3D%252Caps%252C215%26sr%3D8-12-spons%26psc%3D1
+},
+{
+Title: KOORUI 22 Inch Computer Monitor, FHD 1080P VA Desktop Display, 75HZ Ultra Thin Bezel/Eye Care/Ergonomic Tilt, HDMI VGA Ports LED Monitor for PC, VESA
+Price: $77.99
+Link: https://www.amazon.com/KOORUI-Computer-Monitor-Desktop-Ergonomic/dp/B0B5CY8Y5G/ref=sr_1_14?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-14
+},
+{
+Title: KOORUI 24 Inch Computer Monitor Full HD 1920 x 1080p VA Display 75Hz 3000:1 Contrast Ratio with HDMI, VGA, Frameless, 75 x 75 mm VESA Mountable, Ergonomic Tilt, Black
+Price: $91.35
+Link: https://www.amazon.com/KOORUI-Business-Computer-Monitor-Display/dp/B09VD9P2Q3/ref=sr_1_16?crid=3UV5CBW0IV88S&keywords=Computer+Monitor&qid=1674661208&sprefix=%2Caps%2C215&sr=8-16
+},
+{
+Title: 24 Inch Computer Privacy Screen Protector, Anti Glare & Anti Scratch Monitor Screen Filter Compatible with All 24 Inch Widescreen Computer with 16:9 Aspect Ratio
+Price: $37.99
+Link: https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A00513462JHKSV43RABC6&qualifier=1674661208&id=5427236841733556&widgetName=sp_mtf&url=%2FComputer-Privacy-Protector-Compatible-Widescreen%2Fdp%2FB09X9RKLCT%2Fref%3Dsr_1_17_sspa%3Fcrid%3D3UV5CBW0IV88S%26keywords%3DComputer%2BMonitor%26qid%3D1674661208%26sprefix%3D%252Caps%252C215%26sr%3D8-17-spons%26psc%3D1%26smid%3DA23IVA4WX1GTN2
+},
+{
+Title: Sceptre IPS 22 inch 1080p Gaming Monitor 75Hz HDMI x2 99% sRGB up to 320 Lux Blue Light Filter Build-in Speakers, Machine Black (E225W-FPT Series)
+Price: $79.97
+Link: https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_btf_aps_sr_pg1_1?ie=UTF8&adId=A046314313X7ISEHRIMW6&qualifier=1674661208&id=5427236841733556&widgetName=sp_btf&url=%2FSceptre-Monitor-Speakers-Machine-E225W-FPT%2Fdp%2FB0B4Q16HBS%2Fref%3Dsr_1_22_sspa%3Fcrid%3D3UV5CBW0IV88S%26keywords%3DComputer%2BMonitor%26qid%3D1674661208%26sprefix%3D%252Caps%252C215%26sr%3D8-22-spons%26psc%3D1
+}

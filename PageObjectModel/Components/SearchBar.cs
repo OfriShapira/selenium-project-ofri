@@ -9,10 +9,7 @@ namespace PageObjectModel.Components
 {
     class SearchBar
     {
-        private IWebElement searchBar;
         private IWebDriver driver;
-        private string text;
-
 
         public SearchBar(IWebDriver webDriver)
         {
@@ -23,7 +20,7 @@ namespace PageObjectModel.Components
         {
             get
             {
-                // find element and get its text
+                // Find the search bar and get its text
                 return driver.FindElement(By.Id("twotabsearchtextbox")).Text;
             }
             set
@@ -40,6 +37,7 @@ namespace PageObjectModel.Components
             }
         }
 
+        // Function to perform the click on the search icon
         public void Click()
         {
             driver.FindElement(By.Id("nav-search-submit-button")).Click();

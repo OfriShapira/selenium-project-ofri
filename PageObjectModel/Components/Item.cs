@@ -22,7 +22,7 @@ namespace PageObjectModel.Components
 
         public override string ToString()
         {
-            return $"[Title: {Title}, \nPrice: {Price}]\n Link: {Link}]";
+            return $"{{\nTitle: {Title}\nPrice: {Price}\nLink: {Link}\n}}";
 
         }
 

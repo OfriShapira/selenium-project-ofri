@@ -17,27 +17,49 @@ namespace PageObjectModel.Tests
             chromeDriver = BrowserFactory.GetDriver("chrome", new List<string> {});
             Amazon = new Amazon(chromeDriver);
         }
+
         [Test]
-        public void FirstTest()
+        public void MouseResultsTest()
         {
             Dictionary<string, string> dictConditions = new Dictionary<string, string>();
             BrowserFactory.LoadApplication("https://www.amazon.com/", chromeDriver);
-            dictConditions.Add("Price_Lower_Then", "1000");
-            dictConditions.Add("Price_Hiegher_OR_Equal_Then", "0");
+            dictConditions.Add("Price_Lower_Then", "100");
+            dictConditions.Add("Price_Hiegher_OR_Equal_Then", "50");
             dictConditions.Add("Free_Shipping", "true");
+            
             Amazon.Start();
-/*            Amazon.Pages.Home.SearchBar.Text = "mouse"; // return 0 results */
-            Amazon.Pages.Home.SearchBar.Text = "computer monitor"; // return 2 results
+            Amazon.Pages.Home.SearchBar.Text = "mouse";
             Amazon.Pages.Home.SearchBar.Click();
             List<Item> items = Amazon.Pages.Results.GetResultsBy(dictConditions);
             Amazon.Pages.Results.PrintItems(items);
-            /* Assert.Equals(1, items.Count);*/
-        } 
+           
+            Assert.That(items.Count, Is.EqualTo(0));
+
+        }
+
+        [Test]
+        // Another test method, to test a scenario which actully retrive results
+        public void MonitorResultsTest()
+        {
+            Dictionary<string, string> dictConditions = new Dictionary<string, string>();
+            BrowserFactory.LoadApplication("https://www.amazon.com/", chromeDriver);
+            dictConditions.Add("Price_Lower_Then", "100");
+            dictConditions.Add("Price_Hiegher_OR_Equal_Then", "50");
+            dictConditions.Add("Free_Shipping", "false");
+            
+            Amazon.Start();
+            Amazon.Pages.Home.SearchBar.Text = "Computer Monitor";
+            Amazon.Pages.Home.SearchBar.Click();
+            List<Item> items = Amazon.Pages.Results.GetResultsBy(dictConditions);
+            Amazon.Pages.Results.PrintItems(items);
+            
+            Assert.That(items.Count, Is.EqualTo(3));
+        }
 
         [TearDown]
         public void Close()
         {
-           /* BrowserFactory.CloseDriver(chromeDriver);*/
+            BrowserFactory.CloseDriver(chromeDriver);
         }
     }
 }
