@@ -18,7 +18,6 @@ namespace PageObjectModel.Components
             Title = title;
             Price = price;
             Link = link;
-
         }
 
         public override string ToString()

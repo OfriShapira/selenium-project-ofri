@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace PageObjectModel.Tests
 {
-    public class UnitTest1
+    public class ChromeUnitTest1
     {
         private IWebDriver chromeDriver;
         private Amazon Amazon;
@@ -16,20 +16,22 @@ namespace PageObjectModel.Tests
         {
             chromeDriver = BrowserFactory.GetDriver("chrome", new List<string> {});
             Amazon = new Amazon(chromeDriver);
-   
         }
         [Test]
         public void FirstTest()
         {
             Dictionary<string, string> dictConditions = new Dictionary<string, string>();
             BrowserFactory.LoadApplication("https://www.amazon.com/", chromeDriver);
-            dictConditions.Add("Price_Lower_Then", "100");
-            dictConditions.Add("Price_Hiegher_OR_Equal_Then", "50");
+            dictConditions.Add("Price_Lower_Then", "1000");
+            dictConditions.Add("Price_Hiegher_OR_Equal_Then", "0");
             dictConditions.Add("Free_Shipping", "true");
             Amazon.Start();
-            Amazon.Pages.Home.SearchBar.Text = "mouse";
+/*            Amazon.Pages.Home.SearchBar.Text = "mouse"; // return 0 results */
+            Amazon.Pages.Home.SearchBar.Text = "computer monitor"; // return 2 results
             Amazon.Pages.Home.SearchBar.Click();
-            Amazon.Pages.Results.GetResultsBy(dictConditions);
+            List<Item> items = Amazon.Pages.Results.GetResultsBy(dictConditions);
+            Amazon.Pages.Results.PrintItems(items);
+            /* Assert.Equals(1, items.Count);*/
         } 
 
         [TearDown]
