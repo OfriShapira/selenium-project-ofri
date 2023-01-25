@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace PageObjectModel.Components
 {
-     class ResultsItem
-    {
+     class Item
+    { 
         public string Title { get; set; }
-        public double Price { get; set; }
-        public ResultsItem(string title, double price) 
+        public string Price { get; set; }
+        public string Link { get; set; }
+
+        public Item(string title, string price, string link) 
         {
             Title = title;
             Price = price;
+            Link = link;
+
         }
 
         public override string ToString()
         {
-            return $"[Title: {Title}, \nPrice: {Price}]\n";
+            return $"[Title: {Title}, \nPrice: {Price}]\n Link: {Link}]";
 
         }
 

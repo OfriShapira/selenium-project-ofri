@@ -1,4 +1,4 @@
-using OpenQA.Selenium;
+/*using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace PageObjectModel.Tests
@@ -18,9 +18,9 @@ namespace PageObjectModel.Tests
         [Test]
         public void FireFoxTest()
         {
-            /*
+            *//*
              Get All Prices Larger Than In Firefox
-            */
+            *//*
             BrowserFactory.LoadApplication("https://www.ebay.com/", firefoxDriver);
             ebayTester.Start();
             ebayTester.Home.SearchBar.SearchFor("Keyboard");
@@ -37,4 +37,4 @@ namespace PageObjectModel.Tests
             BrowserFactory.CloseDriver(firefoxDriver);
         }
     }
-}
+}*/

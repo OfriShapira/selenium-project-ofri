@@ -9,35 +9,40 @@ namespace PageObjectModel.Components
 {
     class SearchBar
     {
-        private IWebElement searchBar, searchIcon;
+        private IWebElement searchBar;
         private IWebDriver driver;
+        private string text;
+
+
         public SearchBar(IWebDriver webDriver)
-        { 
+        {
             driver = webDriver;
         }
 
-        public void SearchFor(string search)
+        public string Text
         {
-            try
+            get
             {
-                searchBar = driver.FindElement(By.Id("gh-ac"));
+                // find element and get its text
+                return driver.FindElement(By.Id("twotabsearchtextbox")).Text;
             }
-            catch(Exception e)
+            set
             {
-                Console.WriteLine($"Driver didn't find the search bar component. The exception is: {e}");
+                try
+                {
+                    // Send the text to the searchbar
+                    driver.FindElement(By.Id("twotabsearchtextbox")).SendKeys(value); ;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Driver didn't find the search bar component. The exception is: {e}");
+                }
             }
+        }
 
-            try
-            {
-                searchIcon = driver.FindElement(By.Id("gh-btn"));
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine($"Driver didn't find the search button. The exception is: {e}");
-            }
-
-            searchBar.SendKeys(search);
-            searchIcon.Click();
+        public void Click()
+        {
+            driver.FindElement(By.Id("nav-search-submit-button")).Click();
         }
     }
 }
