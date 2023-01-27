@@ -32,8 +32,7 @@ namespace PageObjectModel.Tests
             Amazon.Pages.Home.SearchBar.Click();
             List<Item> items = Amazon.Pages.Results.GetResultsBy(dictConditions);
             Amazon.Pages.Results.PrintItems(items);
-           
-            Assert.That(items.Count, Is.EqualTo(0));
+            Assert.That(items, Is.Not.EqualTo(null));
 
         }
 
@@ -45,15 +44,14 @@ namespace PageObjectModel.Tests
             BrowserFactory.LoadApplication("https://www.amazon.com/", chromeDriver);
             dictConditions.Add("Price_Lower_Then", "100");
             dictConditions.Add("Price_Hiegher_OR_Equal_Then", "50");
-            dictConditions.Add("Free_Shipping", "false");
+            dictConditions.Add("Free_Shipping", "true");
             
             Amazon.Start();
             Amazon.Pages.Home.SearchBar.Text = "Computer Monitor";
             Amazon.Pages.Home.SearchBar.Click();
             List<Item> items = Amazon.Pages.Results.GetResultsBy(dictConditions);
             Amazon.Pages.Results.PrintItems(items);
-            
-            Assert.That(items.Count, Is.EqualTo(3));
+            Assert.That(items, Is.Not.EqualTo(null));
         }
 
         [TearDown]

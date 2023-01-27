@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aG2t1F1bJ/Eu3Sc2N1n2IIIpO8KFKCcdqux9U11cgo3o7nUR+NnRSHSgh4DRHdqtLuVXmKWn2dlzdpnSvI+V+A==",
+  "dgSpecHash": "p7+0Y8URlbZH65SleK2Jb1pBIwfyD3cKP6NVMPBtgwQP/Lt+rDi/1PzTNsGfKKIXJpI02+NlYjnqRk5ZhZ/OcA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ofris\\source\\repos\\AmazonProject\\PageObjectModel\\PageObjectModel\\PageObjectModel.csproj",
+  "projectFilePath": "C:\\Users\\ofris\\source\\repos\\amazon2\\selenium-project-ofri\\PageObjectModel\\PageObjectModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ofris\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\ofris\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
