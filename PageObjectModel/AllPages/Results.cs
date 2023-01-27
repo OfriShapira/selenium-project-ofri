@@ -17,7 +17,6 @@ namespace PageObjectModel.AllPages
     {
         private IWebDriver driver;
         private SearchBar searchBar;
-        public List<Item> ResultsItems { get; set; }
         
         public Results(IWebDriver webDriver) 
         {

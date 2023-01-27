@@ -11,7 +11,7 @@ namespace PageObjectModel.Tests
         private IWebDriver driver;
         private Amazon Amazon;
         private string parameterToSearch = "mouse";
-        private string browserToTest = "firefox";
+        private string browserToTest = "chrome";
 
         [SetUp]
         public void Setup()
