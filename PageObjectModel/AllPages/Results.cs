@@ -36,7 +36,6 @@ namespace PageObjectModel.AllPages
             }
         }
 
-
         // Method which gets a dictionary of conditions and returns a list of items accodrding to those conditions
         public List<Item> GetResultsBy(Dictionary<string, string> conditions)
         {
