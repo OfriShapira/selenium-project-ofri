@@ -24,7 +24,6 @@ namespace PageObjectModel.Tests
         [Test]
         public void MouseResultsTest()
         {
-            Dictionary<string, string> dictConditions = new Dictionary<string, string>();
             BrowserFactory.LoadApplication("https://www.amazon.com/", driver);
             
             Amazon.Start();

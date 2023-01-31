@@ -45,13 +45,13 @@ namespace PageObjectModel.AllPages
 
             if (conditions.ContainsKey("Price_Lower_Then"))
             {
-                // extract the price value from the span, and perform the condtion which check if the value is lower than the input
+                // extract the price value from the span, and check if the it is lower than the input
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) < {conditions["Price_Lower_Then"]}";
             }
 
             if (conditions.ContainsKey("Price_Hiegher_OR_Equal_Then"))
             {
-                // extract the price value from the span, and perform the condtion which check if the value is higher or equal than the input
+                // extract the price value from the span, and check if it is higher or equal than the input
                 mainXpath += $" and number(substring-before(substring((.), 2, 30), '$')) >= {conditions["Price_Hiegher_OR_Equal_Then"]} ";
             }
 
@@ -65,17 +65,17 @@ namespace PageObjectModel.AllPages
                 }
                 else if (isFreeShipped == "false")
                 {
-                    // check if the ancestor div of the span contains span without 'free shipping' text
+                    // check if the ancestor div of the span does not contains span with 'free shipping' text 
                     mainXpath += " and .//ancestor::div[@class='sg-row' and .//span[not(contains(text(), 'FREE Shipping'))]] ";
                 }
             }
 
-            // concat to the main xpath string of xpath, which points on the parent div of each product
+            // concat the main xpath to the xpath string which points to the parent div of each product
             mainXpath += closingXpath;
 
             IList<IWebElement> itemsList = driver.FindElements(By.XPath(mainXpath));
 
-            // adds the products we found from the xpath expression, with its conditions, to the items list
+            // adds the products we found from the xpath expression, if their conditions are fulfilled, to the items list
             foreach (IWebElement item in itemsList)
             {
                 IWebElement linkElement = item.FindElement(By.XPath(".//a[@class='a-size-base a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']"));
